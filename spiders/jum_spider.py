@@ -15,11 +15,13 @@ class GoodReadsSpider(scrapy.Spider):
             price = product.xpath(".//span[@dir='ltr']/@data-price").extract_first()
             new_price = int(price)
 
-            if (new_price < 1500000):
+            if (new_price < 1200000 ):
                 yield {
                     'name':product.xpath(".//span[@class='name']/text()").extract_first(),
                     'price':product.xpath(".//span[@dir='ltr']/@data-price").extract_first()
                 }
+
+                
             
 
         next_page = response.selector.xpath("//a[@title='Next']/@href").extract_first()
